@@ -1,0 +1,28 @@
+version: '3'
+services:
+  ubuntu_ssh:
+    build:
+      context: .
+      dockerfile: Dockerfile_ubuntu
+    container_name: ubuntu_ssh_container
+    ports:
+      - "2222:22"
+    networks:
+      - ssh_network
+    depends_on:
+      - fedora_ssh
+
+  fedora_ssh:
+    build:
+      context: .
+      dockerfile: Dockerfile_fedora
+    container_name: fedora_ssh_container
+    ports:
+      - "2223:22"
+    networks:
+      - ssh_network
+
+networks:
+  ssh_network:
+    driver: bridge
+

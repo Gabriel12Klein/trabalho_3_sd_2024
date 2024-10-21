@@ -1,0 +1,18 @@
+FROM fedora:latest
+RUN dnf install -y openssh-server
+
+# cria diretório pro ssh funcionar
+RUN mkdir /var/run/sshd
+
+# gera chaves ssh
+RUN ssh-keygen -A
+
+# Muda a senha do root
+RUN echo 'root:fedora123' | chpasswd
+
+# Permite conexão ssh como root
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
