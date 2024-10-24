@@ -1,0 +1,8 @@
+Trabalho 3: Fedora
+Grupo: Christian Gabriel Candeloni, Gabriel Klein, Gabriel Plagens
+
+Objetivo das imagens: Criar um docker usando o Fedora e o Ubuntu, e utilizar o SSH para transferir arquivos entre os docker´s
+
+Passos para execução:
+
+  1) 
